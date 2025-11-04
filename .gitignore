@@ -1,0 +1,11 @@
+
+*
+
+!.gitignore
+!*.c
+!README.md
+
+*.o
+*.exe
+*.out
+.DS_Store
