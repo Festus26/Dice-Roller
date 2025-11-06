@@ -147,6 +147,8 @@ const char* dice_faces_d20[20] = {
     " ╱╲ \n╱20╲\n╲__╱"
 };
 
+// For d100 we generate a simple ASCII face at runtime (no static 100-entry array)
+
 // Clear screen function
 void clear_screen() {
     system(CLEAR_SCREEN);
@@ -174,6 +176,13 @@ void display_dice(int dice_type, int face_index) {
         case 20:
             printf("%s\n", dice_faces_d20[face_index]);
             break;
+        case 100: {
+            int val = face_index + 1;
+            printf("┌─────────┐\n");
+            printf("│   %3d   │\n", val);
+            printf("└─────────┘\n");
+            break;
+        }
     }
     printf("\n");
 }
@@ -187,6 +196,7 @@ const char* get_dice_name(int dice_type) {
         case 10: return "D10 (Pentagonal trapezohedron)";
         case 12: return "D12 (Dodecahedron)";
         case 20: return "D20 (Icosahedron)";
+        case 100: return "D100 (Zocchihedron)";
         default: return "Unknown";
     }
 }
@@ -232,9 +242,10 @@ int display_dice_menu() {
     printf("║ 4. D10 - 10-sided die                 ║\n");
     printf("║ 5. D12 - 12-sided die (Dodecahedron)  ║\n");
     printf("║ 6. D20 - 20-sided die (Icosahedron)   ║\n");
+    printf("║ 7. D100 - 100-sided die               ║\n");
     printf("║ 0. Exit                               ║\n");
     printf("╚═══════════════════════════════════════╝\n");
-    printf("\nEnter your choice (0-6): ");
+    printf("\nEnter your choice (0-7): ");
     
     int choice;
     scanf("%d", &choice);
@@ -247,6 +258,7 @@ int display_dice_menu() {
         case 4: return 10;
         case 5: return 12;
         case 6: return 20;
+        case 7: return 100;
         case 0: return 0;
         default: 
             printf("Invalid choice! Please try again.\n");
@@ -263,6 +275,7 @@ int parse_dice_argument(const char* arg) {
     if (strcasecmp(arg, "d10") == 0) return 10;
     if (strcasecmp(arg, "d12") == 0) return 12;
     if (strcasecmp(arg, "d20") == 0) return 20;
+    if (strcasecmp(arg, "d100") == 0) return 100;
     return -1; // Invalid dice type
 }
 

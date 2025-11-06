@@ -4,7 +4,7 @@ A simple command-line dice rolling application written in C with ASCII art anima
 
 ## ✨ Features
 
-- **6 Dice Types**: D4, D6, D8, D10, D12, and D20
+- **7 Dice Types**: D4, D6, D8, D10, D12, D20 and D100
 - **ASCII Art**: Custom visual representations for each dice
 - **Animated Rolling**: Fun rolling animation
 - **Cross-Platform**: Works on Windows, macOS, and Linux
@@ -35,6 +35,7 @@ gcc main.c -o dice_roller
 ```bash
 ./dice_roller d20    # Roll a 20-sided die
 ./dice_roller d6     # Roll a 6-sided die
+./dice_roller d100   # Roll a 100-sided die
 ```
 
 ## 🎮 Supported Dice
@@ -47,6 +48,7 @@ gcc main.c -o dice_roller
 | D10  | 10    | Pentagonal trapezohedron |
 | D12  | 12    | Dodecahedron |
 | D20  | 20    | Icosahedron |
+| D100 | 100   | Zocchihedron |
 
 ## 🛠️ Technical Details
 
